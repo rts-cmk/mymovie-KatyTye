@@ -1,0 +1,50 @@
+@import url("https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,200..1000;1,200..1000&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Merriweather:ital,opsz,wght@0,18..144,300..900;1,18..144,300..900&display=swap");
+:root {
+  --primary-text-color: #000;
+  --secondary-text-color: #fff;
+  --third-text-color: #9C9C9C;
+  --primary-background-color: #fff;
+  --secondary-background-color: #000;
+}
+
+* {
+  list-style-type: none;
+  text-decoration: none;
+  box-sizing: border-box;
+  font-family: "Mulish", sans-serif;
+}
+
+figure, body, li, ul, ol {
+  margin: 0;
+  padding: 0;
+}
+
+h1, h2, h3, h4, p, a {
+  transition: color 0.3s linear;
+  color: var(--primary-text-color);
+}
+h1.dark, h2.dark, h3.dark, h4.dark, p.dark, a.dark {
+  color: var(--secondary-text-color);
+}
+
+div {
+  transition: background 0.3s linear;
+  background: var(--primary-background-color);
+}
+div.dark {
+  background: var(--secondary-background-color);
+}
+
+h3 {
+  font-family: "Merriweather";
+}
+
+body {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  background: #1c1c1c;
+  justify-content: center;
+}

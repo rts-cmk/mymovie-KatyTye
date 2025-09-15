@@ -1,4 +1,159 @@
 #wrapper {
   width: 375px;
   height: 812px;
+  overflow: hidden scroll;
+}
+#wrapper #top-content {
+  display: grid;
+  padding: 25px 25px;
+  grid-template-columns: 1fr 2fr 1fr;
+}
+#wrapper #top-content img {
+  cursor: pointer;
+}
+#wrapper #top-content h1 {
+  font-size: 16px;
+  cursor: pointer;
+  text-align: center;
+  font-family: "Merriweather";
+}
+#wrapper #top-content #mode-button {
+  width: 38px;
+  height: 21px;
+  border: none;
+  cursor: pointer;
+  margin-left: auto;
+  border-radius: 100px;
+  background: #AAA9B1;
+  transition: background 0.3s linear;
+}
+#wrapper #top-content #mode-button span {
+  width: 15px;
+  height: 15px;
+  display: block;
+  border-radius: inherit;
+  background: var(--primary-background-color);
+}
+#wrapper #top-content #mode-button span.dark {
+  background: var(--secondary-background-color);
+}
+#wrapper #top-content #mode-button.dark {
+  background: var(--primary-background-color);
+}
+#wrapper #content {
+  padding-left: 25px;
+}
+#wrapper #content section {
+  padding-top: 25px;
+}
+#wrapper #content section h3 {
+  width: 140px;
+  font-size: 16px;
+  display: inline-block;
+}
+#wrapper #content section button {
+  height: 25px;
+  padding: 5px;
+  font-size: 10px;
+  cursor: pointer;
+  margin-left: 37%;
+  color: #AAA9B1;
+  border-radius: 100px;
+  display: inline-block;
+  background: transparent;
+  transform: translateY(-10%);
+  border: 1px solid #AAA9B1;
+}
+#wrapper #content section ol[id=new-list] {
+  gap: 20px;
+  width: 350px;
+  display: flex;
+  margin-top: 25px;
+  scrollbar-width: none;
+  overflow: scroll hidden;
+}
+#wrapper #content section ol[id=new-list] li {
+  width: 143px;
+  height: 283px;
+}
+#wrapper #content section ol[id=new-list] li .top-card > img {
+  width: 142px;
+  height: 212px;
+  border-radius: 5px;
+}
+#wrapper #content section ol[id=new-list] li .top-card h4 {
+  font-size: 14px;
+  font-weight: bold;
+}
+#wrapper #content section ol[id=new-list] li .top-card p {
+  font-size: 12px;
+  color: #9C9C9C;
+  margin-top: 15px;
+}
+#wrapper #content section ol[id=popular-shows] {
+  width: 325px;
+  display: flex;
+  margin-top: 25px;
+  scrollbar-width: none;
+  flex-direction: column;
+  overflow: hidden scroll;
+}
+#wrapper #content section ol[id=popular-shows] .side-card {
+  gap: 20px;
+  display: flex;
+  border-radius: 5px;
+}
+#wrapper #content section ol[id=popular-shows] .side-card > img {
+  width: 85px;
+  height: 125px;
+}
+#wrapper #content section ol[id=popular-shows] .side-card figcaption {
+  gap: 15px;
+  display: inherit;
+  flex-direction: column;
+}
+#wrapper #content section ol[id=popular-shows] .side-card figcaption h4 {
+  width: 117px;
+  font-size: 14px;
+}
+#wrapper #content section ol[id=popular-shows] .side-card figcaption > p:first-of-type {
+  font-size: 12px;
+  color: #9C9C9C;
+}
+#wrapper #content section ol[id=popular-shows] .side-card figcaption > p:last-of-type {
+  font-size: 12px;
+}
+#wrapper #content section ol[id=popular-shows] .side-card figcaption .tags {
+  gap: 10px;
+  display: flex;
+  width: 235px;
+  overflow: hidden;
+}
+#wrapper #content section ol[id=popular-shows] .side-card figcaption .tags p {
+  font-size: 8px;
+  font-weight: bold;
+  width: -moz-fit-content;
+  width: fit-content;
+  padding: 4px 7px;
+  color: #88A4E8;
+  border-radius: 100px;
+  background: #DBE3FF;
+}
+#wrapper #content section:last-of-type ol {
+  min-height: 215px;
+}
+#wrapper #bottom-content {
+  display: flex;
+  align-items: center;
+  padding: 25px 0px;
+  justify-content: space-evenly;
+  box-shadow: 0px -2px 30px 0px #f3f3f3;
+}
+#wrapper #bottom-content button {
+  border: none;
+  cursor: pointer;
+  background: transparent;
+}
+#wrapper #bottom-content button:first-of-type > img {
+  transform: translateY(15%);
 }

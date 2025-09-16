@@ -7,14 +7,15 @@
 	<link rel="stylesheet" href="/css/resets.css">
 	<link rel="stylesheet" href="/css/style.css">
 	<script src="/scripts/key.js" defer></script>
+	<script src="/scripts/buttons.js" defer></script>
 	<script src="/scripts/fetch.js" defer></script>
 	<title>MyMovies</title>
 </head>
 
-<body>
+<body class="light">
 	<div id="wrapper">
 		<header id="top-content">
-			<img src="/icons/sort.svg" alt="sorting icon">
+			<img src="/icons/sort.svg" alt="sort icon" class="icon">
 			<h1>MyMovies</h1>
 			<label id="mode-button" for="mode"><input type="checkbox" name="mode" id="mode"><span></span></label>
 		</header>
@@ -36,9 +37,9 @@
 		</main>
 
 		<footer id="bottom-content">
-			<button id="movies-button"><img src="/icons/movie.svg" alt="movie icon"></button>
-			<button id="tickets-button"><img src="/icons/ticket.svg" alt="ticket icon"></button>
-			<button id="watchlist-button"><img src="/icons/watchlist.svg" alt="watchlist icon"></button>
+			<button id="movies-button"><img src="/icons/movie.svg" alt="movie icon" class="icon"></button>
+			<button id="tickets-button"><img src="/icons/ticket.svg" alt="ticket icon" class="icon"></button>
+			<button id="watchlist-button"><img src="/icons/watchlist.svg" alt="watchlist icon" class="icon"></button>
 		</footer>
 	</div>
 </body>

@@ -8,7 +8,16 @@
   --secondary-background-color: #000;
 }
 
+.dark {
+  color-scheme: dark;
+}
+
+.light {
+  color-scheme: light;
+}
+
 * {
+  margin: 0;
   list-style-type: none;
   text-decoration: none;
   box-sizing: border-box;
@@ -16,25 +25,15 @@
 }
 
 figure, body, li, ul, ol {
-  margin: 0;
   padding: 0;
 }
 
 h1, h2, h3, h4, p, a {
-  margin: 0;
-  transition: color 0.3s linear;
-  color: var(--primary-text-color);
-}
-h1.dark, h2.dark, h3.dark, h4.dark, p.dark, a.dark {
-  color: var(--secondary-text-color);
+  color: light-dark(var(--secondary-background-color), var(--primary-background-color));
 }
 
 div {
-  transition: background 0.3s linear;
-  background: var(--primary-background-color);
-}
-div.dark {
-  background: var(--secondary-background-color);
+  background: light-dark(var(--primary-background-color), var(--secondary-background-color));
 }
 
 h3 {
@@ -42,10 +41,5 @@ h3 {
 }
 
 body {
-  width: 100vw;
-  height: 100vh;
-  display: flex;
-  align-items: center;
   background: #1c1c1c;
-  justify-content: center;
 }

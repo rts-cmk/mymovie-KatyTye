@@ -6,8 +6,6 @@ const showingMoviesURL = `${sourceURL}/now_playing`
 const popularMoviesURL = `${sourceURL}/popular`
 const imgURL = "https://image.tmdb.org/t/p/w185"
 let genreList
-let text
-let datas
 
 async function fetchCategory() {
 	const options = {
@@ -30,10 +28,10 @@ async function fetchCategory() {
 			showingListElement.innerHTML = data.results.map((movie) => {
 				const element = `<li>
 						<figure class="top-card">
-							<img src="${imgURL}${movie.poster_path}" alt="image of the show">
+							<img loading="lazy" src="${imgURL}${movie.poster_path}" alt="image of show" title="${movie.title}">
 							<figcaption>
-								<h4>${movie.title}</h4>
-								<p><img src="/icons/star.svg" alt="star icon"> ${movie.vote_average.toFixed(1)}/10 IMDb</p>
+								<h4 title="${movie.title}"><span id="${movie.id}">${movie.title}</span></h4>
+								<p><img loading="lazy" src="/icons/star.svg" alt="star icon"> ${movie.vote_average.toFixed(1)}/10 IMDb</p>
 							</figcaption>
 						</figure>
 					</li>`
@@ -44,8 +42,6 @@ async function fetchCategory() {
 	fetch(popularMoviesURL, options)
 		.then((repsonse) => repsonse.json())
 		.then(async (data) => {
-			datas = data
-
 			data.results.forEach(async (movie) => {
 				let time = await fetch(`${sourceURL}/${movie.id}`, options)
 					.then(res => res.json())
@@ -55,10 +51,10 @@ async function fetchCategory() {
 
 				let element = `<li>
 						<figure class="side-card">
-							<img src="${imgURL}${movie.poster_path}" alt="image of the show">
+							<img loading="lazy" src="${imgURL}${movie.poster_path}" alt="image of show ${movie.id}" title="${movie.title}">
 							<figcaption>
-								<h4>${movie.title}</h4>
-								<p><img src="/icons/star.svg" alt="star icon"> ${movie.vote_average.toFixed(1)}/10 IMDb</p>
+								<h4 title="${movie.title}"><span id="${movie.id}">${movie.title}</span></h4>
+								<p><img loading="lazy" src="/icons/star.svg" alt="star icon"> ${movie.vote_average.toFixed(1)}/10 IMDb</p>
 								<div class="tags">
 									${movie.genre_ids.map(id => `<p>${genreList.find(genre => genre.id == id).name}</p>`).join(" ")}
 								</div>
@@ -72,4 +68,12 @@ async function fetchCategory() {
 		})
 }
 
+if (localStorage.getItem("darkMode") == "true") {
+	changeDarkMode()
+}
+
 fetchCategory()
+
+setTimeout(() => {
+	document.querySelectorAll("div").forEach((elm) => { elm.style.transition = "all 0.3s linear" })
+}, 100)

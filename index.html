@@ -6,6 +6,8 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="stylesheet" href="/css/resets.css">
 	<link rel="stylesheet" href="/css/style.css">
+	<script src="/scripts/key.js" defer></script>
+	<script src="/scripts/fetch.js" defer></script>
 	<title>MyMovies</title>
 </head>
 
@@ -14,22 +16,13 @@
 		<header id="top-content">
 			<img src="/icons/sort.svg" alt="sorting icon">
 			<h1>MyMovies</h1>
-			<button id="mode-button"><span></span></button>
+			<label id="mode-button" for="mode"><input type="checkbox" name="mode" id="mode"><span></span></label>
 		</header>
 		<main id="content">
 			<section>
 				<h3>Now Showing</h3>
 				<button id="more1">See more</button>
 				<ol id="new-list">
-					<!-- <li>
-						<figure class="top-card">
-							<img src="/icons/star.svg" alt="image of the show">
-							<figcaption>
-								<h4>Movie Title</h4>
-								<p><img src="/icons/star.svg" alt="star icon"> 0/10 IMDb</p>
-							</figcaption>
-						</figure>
-					</li> -->
 				</ol>
 			</section>
 
@@ -38,19 +31,6 @@
 				<button id="more2">See more</button>
 
 				<ol id="popular-shows">
-					<!-- <li>
-						<figure class="side-card">
-							<img src="/icons/star.svg" alt="image of the show">
-							<figcaption>
-								<h4>Movie Title</h4>
-								<p><img src="/icons/star.svg" alt="star icon"> 0/10 IMDb</p>
-								<div class="tags">
-									<p>HORROR</p>
-								</div>
-								<p>1h 60m</p>
-							</figcaption>
-						</figure>
-					</li> -->
 				</ol>
 			</section>
 		</main>

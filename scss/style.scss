@@ -29,10 +29,20 @@
 			background: #AAA9B1;
 			transition: background 0.3s linear;
 
+			input {
+				opacity: 0;
+				width: 38px;
+				cursor: pointer;
+				position: absolute;
+			}
+
 			span {
+				top: 3px;
+				left: 3px;
 				width: 15px;
 				height: 15px;
 				display: block;
+				position: relative;
 				border-radius: inherit;
 				background: var(--primary-background-color);
 
@@ -78,12 +88,13 @@
 				width: 350px;
 				display: flex;
 				margin-top: 25px;
+				overflow-x: scroll;
+				padding-right: 26px;
 				scrollbar-width: none;
-				overflow: scroll hidden;
 
 				li {
 					width: 143px;
-					height: 283px;
+					min-height: 283px;
 
 					.top-card {
 						&>img {
@@ -107,6 +118,7 @@
 			}
 
 			ol[id="popular-shows"] {
+				gap: 15px;
 				width: 325px;
 				display: flex;
 				margin-top: 25px;
@@ -121,7 +133,7 @@
 
 					&>img {
 						width: 85px;
-						height: 125px;
+						border-radius: 5px;
 					}
 
 					figcaption {
@@ -130,7 +142,7 @@
 						flex-direction: column;
 
 						h4 {
-							width: 117px;
+							width: 220px;
 							font-size: 14px;
 						}
 
@@ -147,7 +159,7 @@
 							gap: 10px;
 							display: flex;
 							width: 235px;
-							overflow: hidden;
+							flex-wrap: wrap;
 
 							p {
 								font-size: 8px;
@@ -170,7 +182,9 @@
 	}
 
 	#bottom-content {
+		top: 5%;
 		display: flex;
+		position: relative;
 		align-items: center;
 		padding: 25px 0px;
 		justify-content: space-evenly;

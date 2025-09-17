@@ -1,5 +1,3 @@
-const showingMoreButton = document.querySelector("#more1")
-const popularMoreButton = document.querySelector("#more2")
 const darkModeButton = document.querySelector("#mode")
 let darkMode = localStorage.getItem("darkMode") || false
 
@@ -12,6 +10,10 @@ function changeDarkMode() {
 	})
 
 	localStorage.setItem("darkMode", darkMode)
+}
+
+if (localStorage.getItem("darkMode") == "true") {
+	changeDarkMode()
 }
 
 function deleteAllMovies() {
@@ -50,12 +52,16 @@ darkModeButton.addEventListener("change", () => {
 document.querySelector("body").addEventListener("click", (element) => {
 	let showID
 
-	if (element.target.alt) { showID = Number(element.target.id) || false };
+	(element.target.alt) ? showID = Number(element.target.alt.split("show")[1]) : showID = Number(element.target.id) || false;
 
 	if (showID) {
 		window.location = `details.html?show=${showID}`
 	}
 })
 
-showingMoreButton.addEventListener("click", () => { changeListShowing(showingMoreButton, "first") })
-popularMoreButton.addEventListener("click", () => { changeListShowing(popularMoreButton), "second" })
+if (document.querySelector("#more1")) {
+	const showingMoreButton = document.querySelector("#more1")
+	const popularMoreButton = document.querySelector("#more2")
+	showingMoreButton.addEventListener("click", () => { changeListShowing(showingMoreButton, "first") })
+	popularMoreButton.addEventListener("click", () => { changeListShowing(popularMoreButton), "second" })
+}

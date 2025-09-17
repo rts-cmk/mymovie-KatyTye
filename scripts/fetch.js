@@ -68,10 +68,6 @@ async function fetchCategory() {
 		})
 }
 
-if (localStorage.getItem("darkMode") == "true") {
-	changeDarkMode()
-}
-
 fetchCategory()
 
 setTimeout(() => {

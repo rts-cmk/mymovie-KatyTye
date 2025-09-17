@@ -1,3 +1,11 @@
+body {
+  transition: background-color 0.2s ease;
+}
+
+.dark #wrapper #top-content #mode-button span {
+  transform: translate(19px, 3px);
+}
+
 #wrapper {
   width: 375px;
   height: 812px;
@@ -24,7 +32,7 @@
   cursor: pointer;
   margin-left: auto;
   border-radius: 100px;
-  transition: background 0.3s linear;
+  transition: background 0.2s ease;
   background: light-dark(#AAA9B1, var(--primary-background-color));
 }
 #wrapper #top-content #mode-button input {
@@ -39,13 +47,24 @@
   display: block;
   border-radius: inherit;
   transform: translate(3px, 3px);
+  transition: transform 0.2s ease;
   background: light-dark(var(--primary-background-color), var(--secondary-background-color));
 }
 #wrapper #content {
   padding-left: 25px;
 }
 #wrapper #content section {
+  overflow: hidden;
   padding-top: 25px;
+}
+#wrapper #content section.hidden {
+  height: 0px;
+  padding: 0px;
+}
+#wrapper #content section.show ol {
+  flex-wrap: wrap;
+  padding-right: 25px;
+  justify-content: center;
 }
 #wrapper #content section h3 {
   width: 140px;
@@ -85,6 +104,7 @@
 }
 #wrapper #content section ol[id=new-list] li .top-card h4 {
   font-size: 14px;
+  cursor: pointer;
   font-weight: bold;
 }
 #wrapper #content section ol[id=new-list] li .top-card p {
@@ -147,11 +167,14 @@
 #wrapper #content section:last-of-type {
   padding: 25px 0px 100px 0px;
 }
+#wrapper #content section:last-of-type.hidden {
+  padding: 0px;
+}
 #wrapper #content section:last-of-type ol {
   min-height: 215px;
 }
 #wrapper #bottom-content {
-  bottom: 7.1%;
+  bottom: 0%;
   display: flex;
   width: 375px;
   position: absolute;

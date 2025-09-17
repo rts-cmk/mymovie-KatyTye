@@ -25,7 +25,7 @@ async function fetchCategory() {
 	fetch(showingMoviesURL, options)
 		.then((repsonse) => repsonse.json())
 		.then((data) => {
-			showingListElement.innerHTML = data.results.map((movie) => {
+			showingListElement.insertAdjacentHTML("afterbegin", data.results.map((movie) => {
 				const element = `<li>
 						<figure class="top-card">
 							<img loading="lazy" src="${imgURL}${movie.poster_path}" alt="image of show" title="${movie.title}">
@@ -36,7 +36,7 @@ async function fetchCategory() {
 						</figure>
 					</li>`
 				return element
-			}).join(" ")
+			}).join(" "))
 		})
 
 	fetch(popularMoviesURL, options)
@@ -63,7 +63,7 @@ async function fetchCategory() {
 						</figure>
 					</li>`
 
-				popularListElement.insertAdjacentHTML("beforeend", element)
+				popularListElement.querySelector(".observer").insertAdjacentHTML("beforebegin", element)
 			})
 		})
 }
@@ -76,4 +76,6 @@ fetchCategory()
 
 setTimeout(() => {
 	document.querySelectorAll("div").forEach((elm) => { elm.style.transition = "all 0.3s linear" })
+	openAllPage("first")
+	openAllPage("second")
 }, 100)

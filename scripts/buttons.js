@@ -14,7 +14,48 @@ function changeDarkMode() {
 	localStorage.setItem("darkMode", darkMode)
 }
 
+function deleteAllMovies() {
+	document.querySelectorAll("#popular-shows li").forEach((elm) => { if (elm.className != "observer") { elm.remove() } })
+	document.querySelectorAll("#new-list li").forEach((elm) => { if (elm.className != "observer") { elm.remove() } })
+}
+
+function changeListShowing(element, parent) {
+	(element.innerHTML == "See more") ? element.innerHTML = "See less" : element.innerHTML = "See more";
+	currentItemSelect = 1
+
+	if (parent == "first") {
+		document.querySelector("#content section:first-of-type").classList.toggle("show")
+		document.querySelector("#content section:last-of-type").classList.toggle("hidden")
+
+		if (!document.querySelector("#content section:first-of-type").classList.value.includes("show")) {
+			deleteAllMovies()
+			fetchCategory()
+		}
+	} else {
+		document.querySelector("#content section:first-of-type").classList.toggle("hidden")
+		document.querySelector("#content section:last-of-type").classList.toggle("show")
+
+		if (!document.querySelector("#content section:last-of-type").classList.value.includes("show")) {
+			deleteAllMovies()
+			fetchCategory()
+		}
+	}
+}
+
 darkModeButton.addEventListener("change", () => {
 	(darkMode == "false") ? darkMode = "true" : darkMode = "false";
 	changeDarkMode()
 })
+
+document.querySelector("body").addEventListener("click", (element) => {
+	let showID
+
+	if (element.target.alt) { showID = Number(element.target.id) || false };
+
+	if (showID) {
+		window.location = `details.html?show=${showID}`
+	}
+})
+
+showingMoreButton.addEventListener("click", () => { changeListShowing(showingMoreButton, "first") })
+popularMoreButton.addEventListener("click", () => { changeListShowing(popularMoreButton), "second" })

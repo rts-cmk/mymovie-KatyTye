@@ -25,6 +25,12 @@ body {
 			cursor: pointer;
 			text-align: center;
 			font-family: "Merriweather";
+
+			a {
+				cursor: pointer;
+				font-size: inherit;
+				font-family: inherit;
+			}
 		}
 
 		#mode-button {

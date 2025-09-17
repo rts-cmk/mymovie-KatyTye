@@ -25,6 +25,11 @@ body {
   text-align: center;
   font-family: "Merriweather";
 }
+#wrapper #top-content h1 a {
+  cursor: pointer;
+  font-size: inherit;
+  font-family: inherit;
+}
 #wrapper #top-content #mode-button {
   width: 38px;
   height: 21px;

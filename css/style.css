@@ -89,6 +89,10 @@ body {
   transform: translateY(-10%);
   border: 2px solid #AAA9B1;
 }
+#wrapper #content section button:hover {
+  color: light-dark(var(--secondary-background-color), var(--primary-background-color));
+  border: 2px solid light-dark(var(--secondary-background-color), var(--primary-background-color));
+}
 #wrapper #content section ol[id=new-list] {
   gap: 20px;
   width: 350px;

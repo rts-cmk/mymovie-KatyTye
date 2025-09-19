@@ -1,4 +1,6 @@
 body {
+  min-height: 100vh;
+  overflow: hidden scroll;
   transition: background-color 0.2s ease;
 }
 
@@ -7,9 +9,8 @@ body {
 }
 
 #wrapper {
-  width: 375px;
-  height: 812px;
-  overflow: hidden scroll;
+  width: 100%;
+  height: inherit;
 }
 #wrapper #top-content {
   display: grid;
@@ -62,6 +63,15 @@ body {
   overflow: hidden;
   padding-top: 25px;
 }
+#wrapper #content section > div {
+  width: 100%;
+  display: flex;
+  padding: 0 25px 0 0;
+  justify-content: space-between;
+}
+#wrapper #content section > div > h3, #wrapper #content section > div > button {
+  margin: 0;
+}
 #wrapper #content section.hidden {
   height: 0px;
   padding: 0px;
@@ -95,9 +105,9 @@ body {
 }
 #wrapper #content section ol[id=new-list] {
   gap: 20px;
-  width: 350px;
   display: flex;
   margin-top: 25px;
+  min-width: 350px;
   overflow-x: scroll;
   padding-right: 26px;
   scrollbar-width: none;
@@ -123,9 +133,9 @@ body {
 }
 #wrapper #content section ol[id=popular-shows] {
   gap: 25px;
-  width: 325px;
   display: flex;
   margin-top: 25px;
+  min-width: 325px;
   scrollbar-width: none;
   flex-direction: column;
   overflow: hidden scroll;
@@ -174,6 +184,7 @@ body {
   background: #DBE3FF;
 }
 #wrapper #content section:last-of-type {
+  min-height: 48vh;
   padding: 25px 0px 100px 0px;
 }
 #wrapper #content section:last-of-type.hidden {
@@ -184,9 +195,9 @@ body {
 }
 #wrapper #bottom-content {
   bottom: 0%;
+  width: 100%;
   display: flex;
-  width: 375px;
-  position: absolute;
+  position: fixed;
   align-items: center;
   padding: 25px 0px;
   background: inherit;

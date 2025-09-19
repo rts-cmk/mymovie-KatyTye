@@ -1,4 +1,6 @@
 body {
+	min-height: 100vh;
+	overflow: hidden scroll;
 	transition: background-color 0.2s ease;
 }
 
@@ -7,9 +9,8 @@ body {
 }
 
 #wrapper {
-	width: 375px;
-	height: 812px;
-	overflow: hidden scroll;
+	width: 100%;
+	height: inherit;
 
 	#top-content {
 		display: grid;
@@ -69,6 +70,17 @@ body {
 			overflow: hidden;
 			padding-top: 25px;
 
+			&>div {
+				width: 100%;
+				display: flex;
+				padding: 0 25px 0 0;
+				justify-content: space-between;
+
+				&>h3, &>button{
+					margin: 0;
+				}
+			}
+
 			&.hidden {
 				height: 0px;
 				padding: 0px;
@@ -107,9 +119,9 @@ body {
 
 			ol[id="new-list"] {
 				gap: 20px;
-				width: 350px;
 				display: flex;
 				margin-top: 25px;
+				min-width: 350px;
 				overflow-x: scroll;
 				padding-right: 26px;
 				scrollbar-width: none;
@@ -142,9 +154,9 @@ body {
 
 			ol[id="popular-shows"] {
 				gap: 25px;
-				width: 325px;
 				display: flex;
 				margin-top: 25px;
+				min-width: 325px;
 				scrollbar-width: none;
 				flex-direction: column;
 				overflow: hidden scroll;
@@ -202,6 +214,7 @@ body {
 		}
 
 		section:last-of-type {
+			min-height: 48vh;
 			padding: 25px 0px 100px 0px;
 
 			&.hidden {
@@ -216,9 +229,9 @@ body {
 
 	#bottom-content {
 		bottom: 0%;
+		width: 100%;
 		display: flex;
-		width: 375px;
-		position: absolute;
+		position: fixed;
 		align-items: center;
 		padding: 25px 0px;
 		background: inherit;

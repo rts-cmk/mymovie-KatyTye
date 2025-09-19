@@ -1,3 +1,4 @@
+const youtubeURL = "https://www.youtube-nocookie.com/embed/"
 const sourceURL = "https://api.themoviedb.org/3/movie"
 const imgURL = "https://image.tmdb.org/t/p/w500"
 const searchParam = window.location.search
@@ -26,7 +27,7 @@ function findMoviePGrating(movie) {
 			return elm.iso_3166_1 === "US" || elm.iso_3166_1 === "GB" || elm.iso_3166_1 === "DE" || elm.iso_3166_1 === "DK"
 		})
 
-		if (!rating) {
+		if (!rating || rating.release_dates[0].certification == "") {
 			Error("Could not find rating.")
 		}
 
@@ -71,6 +72,21 @@ function findMovieCredits(movie) {
 	}).join(" ")
 }
 
+function findMovieTrailer(movie) {
+	let video = "<iframe src='"
+
+	movie.videos.results.forEach((vids) => {
+		if (vids.key !== "" && video === "<iframe src='") {
+			if (vids.name === "Official Trailer") {
+				video = `${video}${youtubeURL}${vids.key}?modestbranding=1&rel=0' width="420" height="345"
+				frameborder="0" allowfullscreen></iframe>`
+			}
+		}
+	})
+
+	return video
+}
+
 fetch(`${sourceURL}/${showID}?append_to_response=credits,videos,release_dates`, options)
 	.then((response) => response.json())
 	.then(async (movie) => {
@@ -78,7 +94,7 @@ fetch(`${sourceURL}/${showID}?append_to_response=credits,videos,release_dates`, 
 
 		let element = `
 			<figure><img src="${imgURL}${movie.backdrop_path}" alt="movie">
-			<video src="https://www.youtube.com/"></video>
+			${findMovieTrailer(movie)}
 			</figure><div><h2>${movie.title}</h2>
 				<p class="rating"><img loading="lazy" src="/icons/star.svg" alt="star icon"> ${movie.vote_average.toFixed(1)}/10 IMDb</p>
 				<div class="tags">
@@ -88,9 +104,9 @@ fetch(`${sourceURL}/${showID}?append_to_response=credits,videos,release_dates`, 
 					<p><span>Language</span>${movie.spoken_languages[0].english_name}</p>
 					<p><span>Rating</span>PG-${findMoviePGrating(movie)}</p>
 				</div><h3>Description</h3>
-				<p class="description">${movie.overview}</p><section>
+				<p class="description">${movie.overview}</p><section><div id="cast-div">
 				<h3>Cast</h3>
-				<button id="more3">See more</button>
+				<button id="more3">See more</button></div>
 				<ol id="cast-list">
 				${findMovieCredits(movie)}
 				</ol></section></div>`

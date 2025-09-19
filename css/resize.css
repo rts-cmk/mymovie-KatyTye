@@ -1,0 +1,16 @@
+@media screen and (min-width: 600px) {
+  #wrapper #content > div {
+    border-radius: 40px;
+  }
+  #wrapper #content > figure img {
+    filter: blur(2.5px);
+  }
+  #wrapper #content .description {
+    margin-right: 40vw;
+  }
+  #wrapper #content section:last-of-type ol {
+    gap: 25px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(72px, 1fr));
+  }
+}

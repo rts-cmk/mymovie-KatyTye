@@ -22,6 +22,8 @@ function findMovieTags(movie) {
 function findMoviePGrating(movie) {
 	let pgRating = "0"
 
+	console.log(movie)
+
 	try {
 		let rating = movie.release_dates.results.find((elm) => {
 			return elm.iso_3166_1 === "US" || elm.iso_3166_1 === "GB" || elm.iso_3166_1 === "DE" || elm.iso_3166_1 === "DK"
@@ -87,15 +89,38 @@ function findMovieTrailer(movie) {
 	return video
 }
 
+function listButton() {
+	if (wList.includes(showID)) {
+		wList = wList.replace(showID + "-", "")
+	} else {
+		wList = wList + showID + "-"
+	}
+
+	checkMovieForWatch(showID)
+	localStorage.setItem("watchlist", wList)
+}
+
+function checkMovieForWatch(id) {
+	if (wList.includes(id)) {
+		document.querySelector("#add img").src = "/icons/watchlist_yellow.svg"
+	} else {
+		if (localStorage.getItem("darkMode") == "true") {
+			document.querySelector("#add img").src = "/icons/watchlist_white.svg"
+		} else {
+			document.querySelector("#add img").src = "/icons/watchlist.svg"
+		}
+	}
+}
+
+// LOAD PAGE
 fetch(`${sourceURL}/${showID}?append_to_response=credits,videos,release_dates`, options)
 	.then((response) => response.json())
 	.then(async (movie) => {
-		console.log(movie)
 
 		let element = `
 			<figure><img src="${imgURL}${movie.backdrop_path}" alt="movie">
 			${findMovieTrailer(movie)}
-			</figure><div><h2>${movie.title}</h2>
+			</figure><div><h2>${movie.title}<a href="#" id="add"><img src="/icons/watchlist_white.svg" class="icon"></a></h2>
 				<p class="rating"><img loading="lazy" src="/icons/star.svg" alt="star icon"> ${movie.vote_average.toFixed(1)}/10 IMDb</p>
 				<div class="tags">
 					${findMovieTags(movie)}
@@ -111,4 +136,9 @@ fetch(`${sourceURL}/${showID}?append_to_response=credits,videos,release_dates`, 
 				${findMovieCredits(movie)}
 				</ol></section></div>`
 		document.querySelector("#content").insertAdjacentHTML("beforeend", element)
+		document.querySelector("#add").addEventListener("click", () => {
+			listButton()
+		})
+
+		checkMovieForWatch(showID)
 	})

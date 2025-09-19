@@ -1,5 +1,6 @@
 const darkModeButton = document.querySelector("#mode")
 let darkMode = localStorage.getItem("darkMode") || false
+let wList = localStorage.getItem("watchlist") || ""
 
 function changeDarkMode() {
 	document.querySelector("body").classList.toggle("dark")
@@ -65,3 +66,48 @@ if (document.querySelector("#more1")) {
 	showingMoreButton.addEventListener("click", () => { changeListShowing(showingMoreButton, "first") })
 	popularMoreButton.addEventListener("click", () => { changeListShowing(popularMoreButton), "second" })
 }
+
+// WATCHLIST
+async function loadDialogWatchList() {
+	await wList.split("-").forEach((id) => {
+		if (id != "") {
+			fetch(`${sourceURL}/${id}`)
+				.then((repsonse) => repsonse.json())
+				.then((movie) => {
+					const element = `<li>
+						<figure class="top-card">
+							<img loading="lazy" src="${imgURL}${movie.poster_path}" alt="image of show" title="${movie.title}">
+							<figcaption>
+								<h4 title="${movie.title}"><span id="${movie.id}">${movie.title}</span></h4>
+								<p><img loading="lazy" src="/icons/star.svg" alt="star icon"> ${movie.vote_average}/10 IMDb</p>
+							</figcaption>
+						</figure>
+					</li>`
+					document.querySelector("#watch").insertAdjacentHTML("afterbegin", element)
+				})
+		}
+	})
+}
+
+document.querySelector("#watchlist-button").addEventListener("click", () => {
+	document.querySelector("#watchlist").showModal()
+	document.querySelector("#watch").innerHTML = ""
+	if (localStorage.getItem("watchlist")) {
+		loadDialogWatchList()
+	}
+})
+
+document.querySelector("#watchlist").addEventListener("click", (element) => {
+	const rect = element.target.getBoundingClientRect();
+
+	const clickedInDialog = (
+		rect.top <= element.clientY &&
+		element.clientY <= rect.top + rect.height &&
+		rect.left <= element.clientX &&
+		element.clientX <= rect.left + rect.width
+	);
+
+	if (clickedInDialog === false) {
+		element.target.close();
+	}
+})

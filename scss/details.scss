@@ -45,10 +45,25 @@
 			}
 		}
 
+		#cast-div {
+			padding-left: 25px;
+		}
+
 		h2 {
 			width: 60%;
 			font-size: 20px;
 			margin-left: 25px;
+
+			a {
+				top: 3px;
+				left: 25px;
+				position: relative;
+
+				img {
+					width: 16px;
+					height: 20px;
+				}
+			}
 		}
 
 		.rating {

@@ -77,7 +77,6 @@ async function openAllPage(input) {
 						}
 
 						setTimeout(() => {
-							console.log(element)
 							listElement.insertAdjacentHTML("beforebegin", element)
 						}, 600)
 					})
